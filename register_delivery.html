@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart | Urban Threads</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+
+    header {
+      background: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .cart-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .total {
+      text-align: right;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+
+    .checkout-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 10px 25px;
+      background: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .checkout-btn:hover {
+      background: #45a049;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 50px;
+      font-size: 1.2rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+ <section id="register" class="registration" style="padding: 50px 20px; text-align: center;">
+  <h2>User Registration</h2>
+  <form id="registrationForm" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <input type="tel" id="phone" placeholder="Phone Number" />
+    <button type="submit" style="padding: 10px; background: #ff6f61; color: white; border: none; border-radius: 5px;">Register</button>
+  </form>
+</section>
+
+<section id="delivery" class="delivery" style="padding: 50px 20px; text-align: center;">
+  <h2>Delivery Address</h2>
+  <form id="deliveryForm" style="max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
+    <input type="text" id="address" placeholder="Street Address" required />
+    <input type="text" id="city" placeholder="City" required />
+    <input type="text" id="state" placeholder="State/Province" required />
+    <input type="text" id="zip" placeholder="ZIP/Postal Code" required />
+    <input type="text" id="country" placeholder="Country" required />
+    <button type="submit" style="padding: 10px; background: #ff6f61; color: white; border: none; border-radius: 5px;">Save Address</button>
+  </form>
+</section>
+<script>
+  document.getElementById("registrationForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const user = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      phone: document.getElementById("phone").value
+    };
+
+    localStorage.setItem("user", JSON.stringify(user));
+    alert("Registration successful!");
+  });
+
+  document.getElementById("deliveryForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const address = {
+      street: document.getElementById("address").value,
+      city: document.getElementById("city").value,
+      state: document.getElementById("state").value,
+      zip: document.getElementById("zip").value,
+      country: document.getElementById("country").value
+    };
+
+    localStorage.setItem("deliveryAddress", JSON.stringify(address));
+    alert("Address saved for delivery.");
+  });
+</script>
+
+</body>
+</html>
